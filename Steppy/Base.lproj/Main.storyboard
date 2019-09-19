@@ -129,7 +129,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" textContentType="tel"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -146,9 +146,12 @@
                     <connections>
                         <outlet property="dailyTargetTextBox" destination="6gG-fz-lmg" id="0ke-mj-LXN"/>
                         <outlet property="nameTextBox" destination="WaQ-YA-nkw" id="UHO-fr-eum"/>
+                        <outlet property="registerButton" destination="bP7-O6-wMg" id="HQn-gn-SFD"/>
+                        <segue destination="Whb-4V-uEr" kind="unwind" identifier="unwindToHomeController" unwindAction="unwindToHomeControllerWithSegue:" id="Sjp-lc-QZv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="Whb-4V-uEr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-297" y="287"/>
         </scene>
@@ -168,28 +171,23 @@
                                 <rect key="frame" x="0.0" y="576" width="414" height="320"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S3P-P3-dHo">
-                                <rect key="frame" x="16" y="84" width="150" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="34"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xe0-lH-nz7">
-                                <rect key="frame" x="338" y="54" width="64" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Settings">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="steps to go" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKX-bZ-4eq">
-                                <rect key="frame" x="155" y="429" width="96" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" red="0.27843137254901962" green="0.56862745098039214" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LX1-sw-AHN">
+                                <rect key="frame" x="20" y="84" width="374" height="87"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S3P-P3-dHo">
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="39.5"/>
+                                        <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="34"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RvX-cB-oxA">
+                                        <rect key="frame" x="0.0" y="47.5" width="149" height="39.5"/>
+                                        <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="34"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="steps today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ak2-vh-N0l">
                                 <rect key="frame" x="55" y="691" width="101" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -237,20 +235,48 @@
                                     <action selector="submitButtonPressed:" destination="JcR-Tg-75c" eventType="touchUpInside" id="5It-ZH-RrP"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="983" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YGL-k4-EL9">
-                                <rect key="frame" x="20" y="363" width="374" height="72"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="60"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7QC-gU-PiY">
+                                <rect key="frame" x="20" y="363" width="374" height="96"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="983" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YGL-k4-EL9">
+                                        <rect key="frame" x="129" y="0.0" width="116.5" height="72"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="60"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="steps to go" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKX-bZ-4eq">
+                                        <rect key="frame" x="139" y="72" width="96" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" red="0.27843137254901962" green="0.56862745098039214" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xe0-lH-nz7">
+                                <rect key="frame" x="330" y="44" width="64" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Settings">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xe0-lH-nz7" firstAttribute="top" secondItem="WKH-eW-0I5" secondAttribute="top" id="Ajs-7J-foD"/>
+                            <constraint firstItem="LX1-sw-AHN" firstAttribute="top" secondItem="WKH-eW-0I5" secondAttribute="top" constant="40" id="Ehb-MQ-Zht"/>
+                            <constraint firstItem="LX1-sw-AHN" firstAttribute="leading" secondItem="WKH-eW-0I5" secondAttribute="leading" constant="20" id="V2U-Ij-f9U"/>
+                            <constraint firstItem="WKH-eW-0I5" firstAttribute="trailing" secondItem="xe0-lH-nz7" secondAttribute="trailing" constant="20" id="cI4-cb-RW0"/>
+                            <constraint firstItem="WKH-eW-0I5" firstAttribute="trailing" secondItem="7QC-gU-PiY" secondAttribute="trailing" constant="20" id="hrS-kF-SpK"/>
+                            <constraint firstItem="7QC-gU-PiY" firstAttribute="leading" secondItem="WKH-eW-0I5" secondAttribute="leading" constant="20" id="hxa-oe-DPL"/>
+                            <constraint firstItem="WKH-eW-0I5" firstAttribute="trailing" secondItem="LX1-sw-AHN" secondAttribute="trailing" constant="20" id="o2T-eG-zTt"/>
+                            <constraint firstItem="7QC-gU-PiY" firstAttribute="centerX" secondItem="EGy-ho-vC9" secondAttribute="centerX" id="oMs-ki-sWo"/>
+                            <constraint firstItem="7QC-gU-PiY" firstAttribute="top" secondItem="LX1-sw-AHN" secondAttribute="bottom" constant="192" id="xnD-I8-ayc"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="WKH-eW-0I5"/>
                     </view>
                     <connections>
                         <outlet property="dailyTargetLabel" destination="bLJ-ea-HAH" id="QEk-Ph-tTg"/>
-                        <outlet property="nameLabel" destination="JvA-kT-OO0" id="vba-b3-tMt"/>
+                        <outlet property="nameLabel" destination="RvX-cB-oxA" id="cVK-Lf-NpY"/>
                         <outlet property="stepsToGoLabel" destination="YGL-k4-EL9" id="6Sz-tr-3Q7"/>
                         <outlet property="stepsTodayLabel" destination="GZS-Cj-jhk" id="efG-n2-nnL"/>
                         <segue destination="tOG-Wy-FnW" kind="show" identifier="showOnboardingSegue" id="VPs-0e-zPT"/>
@@ -258,7 +284,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DX0-Ny-3p1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1697" y="287"/>
+            <point key="canvasLocation" x="-1697.1014492753625" y="286.60714285714283"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="4wT-uA-sFm">

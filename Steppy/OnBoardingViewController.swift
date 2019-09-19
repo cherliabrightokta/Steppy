@@ -11,64 +11,63 @@ import Foundation
 import HealthKit
 
 class OnBoardingViewController: UIViewController {
-    
   
-
-    var healthKitIsAuthorized = false
-    var isRegistered: Bool = false
-//
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
+  var healthKitIsAuthorized = false
+  var isRegistered: Bool = false
+  
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
     
-    
-    @IBAction func authorizeButtonPressed(_ sender: Any) {
-        print("checking...")
-        self.checkAuthorizationStatus()
-        
-       
+  }
+  
+  
+  @IBAction func authorizeButtonPressed(_ sender: Any) {
+    print("checking...")
+    self.checkAuthorizationStatus()
+  }
+  
+  func checkAuthorizationStatus() {
+    if healthKitIsAuthorized == true {
+      print("health kit is authorized...")
+      //            self.dismiss(animated: true, completion: nil)
+      performSegue(withIdentifier: "showRegisterSegue", sender: nil)
+      //            present(LeaderboardViewController(), animated: true, completion: nil)
       
-        
+    } else {
+      authorizeHealthKit()
+      print("health kit is not authorized...")
     }
     
-    func checkAuthorizationStatus() {
-        if healthKitIsAuthorized == true {
-            print("health kit is authorized...")
-//            self.dismiss(animated: true, completion: nil)
-            performSegue(withIdentifier: "showRegisterSegue", sender: nil)
-//            present(LeaderboardViewController(), animated: true, completion: nil)
-            
+  }
+  
+  func authorizeHealthKit() {
+    HealthKitSetupHelper.authorizeHealthKit { (authorized, error) in
+      guard authorized else {
+        let baseErrorMessage = "HealthKit Authorization Failed"
+        
+        if let error = error {
+          print("\(baseErrorMessage). Reason: \(error.localizedDescription)")
         } else {
-            authorizeHealthKit()
-            print("health kit is not authorized...")
+          print(baseErrorMessage)
         }
-        
-    }
-
-    func authorizeHealthKit() {
-        HealthKitSetupHelper.authorizeHealthKit { (authorized, error) in
-            guard authorized else {
-                let baseErrorMessage = "HealthKit Authorization Failed"
-                
-                if let error = error {
-                    print("\(baseErrorMessage). Reason: \(error.localizedDescription)")
-                } else {
-                    print(baseErrorMessage)
-                }
-                return
-            }
-            print("HealthKit succesfully authorized")
-            self.healthKitIsAuthorized = true
-            self.checkAuthorizationStatus()
-//            self.performSegue(withIdentifier: "homeSegue", sender: Any?.self)
-            
-        }
-        
-        
-
+        return
+      }
+      print("HealthKit succesfully authorized")
+      self.healthKitIsAuthorized = true
+      UserDefaults.standard.set(false, forKey: Preferences.isOpenedFirstTime.rawValue)
+      DispatchQueue.main.async {
+        self.performSegue(withIdentifier: "showRegisterSegue", sender: nil)
+      }
+//      self.checkAuthorizationStatus()
+      //            self.performSegue(withIdentifier: "homeSegue", sender: Any?.self)
+      
     }
     
     
+    
+  }
+  
+  
 }
 
