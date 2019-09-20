@@ -98,6 +98,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
   }
   
   @IBAction func registerButtonPressed(_ sender: Any) {
+  
+    print("called before FaceID")
     
     UserDefaults.standard.set(nameTextBox.text!, forKey: Preferences.username.rawValue)
     UserDefaults.standard.set(Int(dailyTargetTextBox.text!), forKey: Preferences.userStepsGoal.rawValue)
@@ -117,6 +119,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
           print(result)
           print("face id succeed")
           DispatchQueue.main.async {
+            print("called from dispatch")
             self.performSegue(withIdentifier: "unwindToHomeController", sender: self)
           }
         }
